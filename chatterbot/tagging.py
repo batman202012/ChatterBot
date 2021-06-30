@@ -23,20 +23,31 @@ class PosLemmaTagger(object):
 
         self.punctuation_table = str.maketrans(dict.fromkeys(string.punctuation))
 
-        self.nlp = spacy.load(self.language.ISO_639_1.lower())
+        self.nlp = spacy.load(self.language.ISO_639_1.lower(), disable=["transformer", "parser", "ner"])
+
+    def punctuation_check(self, text):
+        if len(text) <= 2:
+            text_without_punctuation = text.translate(self.punctuation_table)
+            if len(text_without_punctuation) >= 1:
+                return text_without_punctuation
+        return text
+
+    def get_text_index_string_multi(self, texts):
+        new_texts = [self.punctuation_check(text) for text in texts]
+
+        return [self._process_document(doc) for doc in self.nlp.pipe(new_texts)]
 
     def get_text_index_string(self, text):
         """
         Return a string of text containing part-of-speech, lemma pairs.
         """
-        bigram_pairs = []
-
-        if len(text) <= 2:
-            text_without_punctuation = text.translate(self.punctuation_table)
-            if len(text_without_punctuation) >= 1:
-                text = text_without_punctuation
-
+        text = self.punctuation_check(text)
         document = self.nlp(text)
+        return self._process_document(document)
+
+    def _process_document(self, document):
+        bigram_pairs = []
+        text = document.text
 
         if len(text) <= 2:
             bigram_pairs = [
