@@ -15,3 +15,5 @@ venv
 
 # Database files
 *.sqlite3
+/.venv/
+.idea/
