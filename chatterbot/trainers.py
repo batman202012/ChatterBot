@@ -90,6 +90,11 @@ class ListTrainer(Trainer):
 
         statements_to_create = []
 
+        search_texts = self.chatbot.storage.tagger.get_text_index_string_multi(conversation)
+
+        if len(search_texts) != len(conversation):
+            print("Uh oh")
+
         for conversation_count, text in enumerate(conversation):
             if self.show_training_progress:
                 utils.print_progress_bar(
@@ -97,7 +102,8 @@ class ListTrainer(Trainer):
                     conversation_count + 1, len(conversation)
                 )
 
-            statement_search_text = self.chatbot.storage.tagger.get_text_index_string(text)
+            # statement_search_text = self.chatbot.storage.tagger.get_text_index_string(text)
+            statement_search_text = search_texts[conversation_count]
 
             statement = self.get_preprocessed_statement(
                 Statement(
