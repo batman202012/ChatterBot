@@ -2,24 +2,32 @@ import string
 from chatterbot import languages
 
 
-class LowercaseTagger(object):
-    """
-    Returns the text in lowercase.
-    """
+class Tagger:
 
     def __init__(self, language=None):
         self.language = language or languages.ENG
 
     def get_text_index_string(self, text):
+        return text
+
+    def get_text_index_string_multi(self, texts):
+        return texts
+
+
+class LowercaseTagger(Tagger):
+    """
+    Returns the text in lowercase.
+    """
+
+    def get_text_index_string(self, text):
         return text.lower()
 
 
-class PosLemmaTagger(object):
+class PosLemmaTagger(Tagger):
 
     def __init__(self, language=None):
+        super().__init__(language)
         import spacy
-
-        self.language = language or languages.ENG
 
         self.punctuation_table = str.maketrans(dict.fromkeys(string.punctuation))
 
