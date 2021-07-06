@@ -71,6 +71,9 @@ class PosLemmaTagger(Tagger):
                     token for token in document if token.is_alpha
                 ]
 
+            if len(tokens) > 512:
+                tokens = tokens[:512]
+
             for index in range(1, len(tokens)):
                 bigram_pairs.append('{}:{}'.format(
                     tokens[index - 1].pos_,
