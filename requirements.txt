@@ -1,6 +1,6 @@
 mathparse
 python-dateutil
-sqlalchemy
+sqlalchemy>=1.4.20
 pytz
 spacy>=3.0
 git+git://github.com/gunthercox/chatterbot-corpus@master#egg=chatterbot_corpus
