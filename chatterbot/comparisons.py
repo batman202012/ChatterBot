@@ -4,7 +4,12 @@ designed to compare one statement to another.
 """
 from chatterbot.exceptions import OptionalDependencyImportError
 from difflib import SequenceMatcher
-
+import os
+import torch
+import cupy
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
+os.environ['CUPY_GPU_MEMORY_LIMIT'] = '90%'
 
 class Comparator:
 
@@ -66,6 +71,13 @@ class SpacySimilarity(Comparator):
         super().__init__(language)
         try:
             import spacy
+            from thinc.api import set_gpu_allocator, require_gpu
+            dev0 = cupy.cuda.Device(0)
+            dev0.use()
+            handle = dev0.get_cublas_handle()
+            print(handle)
+            set_gpu_allocator("pytorch")
+            require_gpu(0)
         except ImportError:
             message = (
                 'Unable to import "spacy".\n'
@@ -73,8 +85,7 @@ class SpacySimilarity(Comparator):
                 'pip3 install "spacy>=2.1,<2.2"'
             )
             raise OptionalDependencyImportError(message)
-
-        self.nlp = spacy.load(self.language.ISO_639_1)
+        self.nlp = spacy.load("en_core_web_trf")
 
     def compare(self, statement_a, statement_b):
         """
@@ -85,7 +96,6 @@ class SpacySimilarity(Comparator):
         """
         document_a = self.nlp(statement_a.text)
         document_b = self.nlp(statement_b.text)
-
         return document_a.similarity(document_b)
 
 
@@ -119,6 +129,7 @@ class JaccardSimilarity(Comparator):
         super().__init__(language)
         try:
             import spacy
+            spacy.require_gpu()
         except ImportError:
             message = (
                 'Unable to import "spacy".\n'
