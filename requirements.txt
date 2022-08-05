@@ -2,7 +2,10 @@ mathparse
 python-dateutil
 sqlalchemy>=1.4.20
 pytz
-spacy>=3.4.1
-git+git://github.com/gunthercox/chatterbot-corpus@master#egg=chatterbot_corpus
+spacy[cuda117]>=3.4.1
+git+http://github.com/gunthercox/chatterbot-corpus@master#egg=chatterbot_corpus
 # this requirement for typer should be ditched once spacy stop supporting or red change and take in account installed lib version to install cogs deps
 typer>=0.4.0,<0.5.0
+nvidia-cuda-runtime-cu117>11.7.60
+nvidia-pyindex>1.0.9
+torch>1.12.0+cu116
