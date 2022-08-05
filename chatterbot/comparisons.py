@@ -66,6 +66,7 @@ class SpacySimilarity(Comparator):
         super().__init__(language)
         try:
             import spacy
+            spacy.require_gpu()
         except ImportError:
             message = (
                 'Unable to import "spacy".\n'
@@ -119,6 +120,7 @@ class JaccardSimilarity(Comparator):
         super().__init__(language)
         try:
             import spacy
+            spacy.require_gpu()
         except ImportError:
             message = (
                 'Unable to import "spacy".\n'
