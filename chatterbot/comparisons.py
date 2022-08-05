@@ -77,7 +77,7 @@ class SpacySimilarity(Comparator):
                 'pip3 install "spacy>=2.1,<2.2"'
             )
             raise OptionalDependencyImportError(message)
-        print("Chatter is currently running on gpu:" + gpu)
+        print("Chatter is currently running on gpu:" + str(gpu))
         self.nlp = spacy.load(self.language.ISO_639_1)
 
     def compare(self, statement_a, statement_b):
