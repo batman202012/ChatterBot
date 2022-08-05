@@ -4,6 +4,7 @@ designed to compare one statement to another.
 """
 from chatterbot.exceptions import OptionalDependencyImportError
 from difflib import SequenceMatcher
+import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 os.environ['CUPY_GPU_MEMORY_LIMIT'] = '90%'
