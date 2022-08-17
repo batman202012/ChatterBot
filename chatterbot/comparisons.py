@@ -71,13 +71,13 @@ class SpacySimilarity(Comparator):
         super().__init__(language)
         try:
             import spacy
-            from thinc.api import set_gpu_allocator, require_gpu
+            from thinc.api import set_gpu_allocator, prefer_gpu
             dev0 = cupy.cuda.Device(0)
             dev0.use()
             handle = dev0.get_cublas_handle()
             print(handle)
             set_gpu_allocator("pytorch")
-            require_gpu(0)
+            prefer_gpu(0)
         except ImportError:
             message = (
                 'Unable to import "spacy".\n'
@@ -129,7 +129,8 @@ class JaccardSimilarity(Comparator):
         super().__init__(language)
         try:
             import spacy
-            spacy.require_gpu()
+            from thinc.api import prefer_gpu
+            prefer_gpu()
         except ImportError:
             message = (
                 'Unable to import "spacy".\n'
