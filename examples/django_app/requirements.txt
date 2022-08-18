@@ -1,2 +1,2 @@
-django>=2.2,<2.3
+django>=4.0
 # chatterbot>=0.8,<1.1
