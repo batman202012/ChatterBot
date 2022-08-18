@@ -9,7 +9,7 @@ to be trained to speak any language.
 
 [![Package Version](https://img.shields.io/pypi/v/chatterbot.svg)](https://pypi.python.org/pypi/chatterbot/)
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/)
-[![Django 2.0](https://img.shields.io/badge/Django-2.0-blue.svg)](https://docs.djangoproject.com/en/2.1/releases/2.0/)
+[![Django 4.0](https://img.shields.io/badge/Django-4.0-blue.svg)](https://docs.djangoproject.com/en/4.0/releases/4.0/)
 [![Requirements Status](https://requires.io/github/batman202012/ChatterBot/requirements.svg?branch=master)](https://requires.io/github/batman202012/ChatterBot/requirements/?branch=master)
 [![Build Status](https://github.com/batman202012/ChatterBot/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/batman202012/ChatterBot/actions/workflows/codeql-analysis.yml)
 [![Documentation Status](https://readthedocs.org/projects/chatterbot/badge/?version=stable)](http://chatterbot.readthedocs.io/en/stable/?badge=stable)
