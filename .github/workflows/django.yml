@@ -10,8 +10,8 @@ on:
 jobs:
   analyze:
     name: Django
-      runs-on: ubuntu-latest
-      permissions:
+    runs-on: self-hosted
+    permissions:
       actions: read
       contents: read
       security-events: write
