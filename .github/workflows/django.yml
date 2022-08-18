@@ -45,10 +45,10 @@ jobs:
         pip install mathparse
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        python -m spacy[cuda117] download en_core_web_sm
-        python -m spacy[cuda117] download en_core_web_md
-        python -m spacy[cuda117] download en_core_web_lg
-        python -m spacy[cuda117] download en_core_web_trf
+        python -m spacy download en_core_web_sm
+        python -m spacy download en_core_web_md
+        python -m spacy download en_core_web_lg
+        python -m spacy download en_core_web_trf
     
     - name: Run Tests
       run: |
