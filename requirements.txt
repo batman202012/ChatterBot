@@ -8,4 +8,3 @@ typer>=0.6.1
 nvidia-pyindex>=1.0.9
 torch>=1.12.0+cu116
 cupy-cuda117<11.0.0
-Django>=4.0
