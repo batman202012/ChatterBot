@@ -36,6 +36,7 @@ jobs:
         pip install django
         pip install pytz
         pip install python-dateutil
+        pip install mathparse
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
