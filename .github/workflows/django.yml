@@ -35,5 +35,6 @@ jobs:
       run: |
         git clone https://github.com/batman202012/ChatterBot/
         pip install django
+        pip install pytz
         cd ./ChatterBot
         python runtests.py test
