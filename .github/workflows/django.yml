@@ -31,8 +31,14 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Clone Repository
+      run: |
+        git clone https://github.com/batman202012/ChatterBot/
+        cd ./ChatterBot
+
     - name: Install dependencies
       run: |
+        cd ./ChatterBot
         pip install django
         pip install pytz
         pip install python-dateutil
@@ -42,6 +48,5 @@ jobs:
     
     - name: Run Tests
       run: |
-        git clone https://github.com/batman202012/ChatterBot/
         cd ./ChatterBot
         python runtests.py test
