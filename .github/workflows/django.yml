@@ -34,4 +34,5 @@ jobs:
     - name: Run Tests
       run: |
         git clone https://github.com/batman202012/ChatterBot/
+        cd ./ChatterBot
         python runtests.py test
