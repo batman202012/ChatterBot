@@ -10,7 +10,7 @@ on:
 jobs:
   analyze:
     name: Django
-      runs-on: self-hosted
+      runs-on: ubuntu-latest
       permissions:
       actions: read
       contents: read
@@ -27,8 +27,8 @@ jobs:
     steps:
     - name: Run Tests
       if: "!endsWith(matrix.python-version, '-dev')"
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
       run: |
-        ./runtests.py
+        python ./runtests.py test
