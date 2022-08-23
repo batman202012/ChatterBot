@@ -4,7 +4,7 @@ sqlalchemy>=1.4.20
 pytz
 spacy[cuda117]>=3.4.1
 # this requirement for typer should be ditched once spacy stop supporting or red change and take in account installed lib version to install cogs deps
-typer<=0.5
+typer>=0.6.1
 nvidia-pyindex>=1.0.9
 torch>=1.12.0+cu116
 cupy-cuda117<11.0.0
